@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- We need a doctype to allow us to use special characters like &nbsp; 
+	 We use a "strict" DTD to make IE follow the alignment rules. -->
+	 
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd">
+<head>
+	<link rel="stylesheet" type="text/css" href="${context:css/examples/simple.css}"/>
+</head>
+<body>
+	<h1>Better Output</h1>
+
+	The method <em>setupRender()</em> is a good place to set up a page's output properties. 
+
+	<div class="eg">
+		${message}<br/>
+		${message}<br/>
+		${message}
+	</div>
+
+	In previous examples we set up <em>message</em> in <em>getMessage()</em>. Now we set it up once, in <em>setupRender()</em>.<br/><br/>
+
+	3 new things in this example, and which you will see often in Tapestry pages:
+	<ul>
+		<li><em>setupRender()</em>  A method which, if present, will be called by Tapestry during its <em>SetupRender</em> phase.</li>
+		<li><em>@Property</em>  A field annotation that creates getter and setter methods at runtime.</li>
+		<li><em>context:</em>  Used in expansions and component parameters, Tapestry replaces it with the path to the root of the web application context.</li> 
+	</ul>	
+	
+	<t:pagelink t:page="examples/output/BetterOutput" href="#">Refresh</t:pagelink><br/><br/>
+	
+	References: 
+	<a href="http://tapestry.apache.org/component-rendering.html#ComponentRendering-SetupRender">SetupRender</a>, 
+	<a href="http://tapestry.apache.org/5.3/apidocs/org/apache/tapestry5/annotations/Property.html">@Property</a>, 
+    <a href="http://tapestry.apache.org/component-parameters.html#ComponentParameters-Context%3ABindings">Context: Bindings</a>, 
+    <a href="http://tapestry.apache.org/component-templates.html#ComponentTemplates-Expansions">Expansions</a>, 
+    <a href="http://tapestry.apache.org/component-parameters.html#ComponentParameters-bindingexpressions">Binding Expressions</a>.<br/><br/>
+	
+	<t:pagelink page="Index" href="#">Home</t:pagelink><br/><br/>
+
+	<t:sourcecodedisplay src="/web/src/main/java/jumpstart/web/pages/examples/output/BetterOutput.tml"/>
+	<t:sourcecodedisplay src="/web/src/main/java/jumpstart/web/pages/examples/output/BetterOutput.java"/>
+	<t:sourcecodedisplay src="/web/src/main/java/jumpstart/web/css/examples/simple.css"/>
+</body>
+</html>

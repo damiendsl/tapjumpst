@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- We need a doctype to allow us to use special characters like &nbsp; 
+	 We use a "strict" DTD to make IE follow the alignment rules. -->
+	 
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd">
+<head>
+	<link rel="stylesheet" type="text/css" href="${context:css/examples/totalcontroloutput.css}"/>
+</head>
+<body>
+	<h1>Total Control Output</h1>
+	
+	BeanDisplay and @Property are quick and easy, but limited. When you need total control of the content, layout and style, 
+	you can code up the template yourself and add suitable getters.
+
+	<div class="eg">
+		<table>
+			<tr>
+				<th>Id:</th>
+				<td>${person.id}</td>
+			</tr>
+			<tr>
+				<th>Version:</th>
+				<td>${person.version}</td>
+			</tr>
+			<tr>
+				<th>Name:</th>
+				<td>${person.lastName}, ${person.firstName}</td>
+			</tr>
+			<tr>
+				<th>Region:</th>
+				<td>${personRegion}</td>
+			</tr>
+			<tr>
+				<th>Start Date:</th>
+				<td><t:output t:value="person.startDate" format="startDateFormat"/></td>
+			</tr>
+		</table>
+	</div>
+
+	4 new things:
+	<ul>
+		<li><em>Property expressions</em> Used in expansions and component parameters. 
+			For example, <code>person.id</code> is equivalent to <code>getPerson().getId()</code>.</li>
+		<li><em>Output</em> A component for formatting output.</li>
+		<li><em>@Inject</em> A field annotation. We use it ask Tapestry to inject its Messages service at runtime.</li>
+		<li><em>Messages</em> A service that provides access to properties files. We use it to convert the enum to a message. 
+			It looks first for <em>TotalControlOutput.properties</em> and finds it.</li>
+	</ul>	
+	
+	References: 
+	<a href="http://tapestry.apache.org/component-templates.html#ComponentTemplates-Expansions">Expansions</a>, 
+	<a href="http://tapestry.apache.org/property-expressions.html">Property Expressions</a>, 
+	<a href="http://tapestry.apache.org/5.3/apidocs/org/apache/tapestry5/corelib/components/Output.html">Output component</a>, 
+	<a href="http://tapestry.apache.org/5.3/apidocs/org/apache/tapestry5/ioc/annotations/Inject.html">@Inject</a>, 
+	<a href="http://tapestry.apache.org/5.3/apidocs/org/apache/tapestry5/ioc/Messages.html">Messages</a>.<br/><br/>	
+	
+	<t:pagelink t:page="Index" href="#">Home</t:pagelink><br/><br/>
+	
+	<t:sourcecodedisplay src="/web/src/main/java/jumpstart/web/pages/examples/output/TotalControlOutput.tml"/>
+	<t:sourcecodedisplay src="/web/src/main/java/jumpstart/web/pages/examples/output/TotalControlOutput.properties"/>
+	<t:sourcecodedisplay src="/web/src/main/java/jumpstart/web/pages/examples/output/TotalControlOutput.java"/>
+	<t:sourcecodedisplay src="/web/src/main/java/jumpstart/web/css/examples/totalcontroloutput.css"/>
+	<t:sourcecodedisplay src="/business/src/main/java/jumpstart/business/domain/person/Person.java"/>
+	<t:sourcecodedisplay src="/business/src/main/java/jumpstart/business/domain/person/Regions.java"/>
+</body>
+</html>

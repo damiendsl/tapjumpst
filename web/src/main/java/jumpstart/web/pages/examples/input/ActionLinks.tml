@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- We need a doctype to allow us to use special characters like &nbsp; 
+	 We use a "strict" DTD to make IE follow the alignment rules. -->
+	 
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd">
+<head>
+	<link rel="stylesheet" type="text/css" href="${context:css/examples/examples.css}"/>
+</head>
+<body>
+	<h1>Action Links</h1>
+	
+	<strong>ActionLink</strong> is very like EventLink and 
+	<a href="http://tapestry.1045711.n5.nabble.com/What-ist-the-advantage-of-ActionLink-compared-to-EventLink-td2419735.html">
+	probably not needed any more</a>, but 
+	<a href="http://tapestry.1045711.n5.nabble.com/EventLInk-vs-ActionLink-td3390203.html">ActionLink is still supported</a>, so here we go...<br/><br/>
+	
+	The first big difference between ActionLink and EventLink is:
+	<ul>
+		<li>Every ActionLink sends its id, not an event name.</li>
+	</ul>
+
+	Here are 3 ActionLinks that have ids <em>addX</em>, <em>addY</em>, and <em>clear</em>:
+		
+	<div class="eg"> 
+		Count = ${count}. <br/>
+		<t:actionlink t:id="addX" t:context="literal:1">Add 1</t:actionlink><br/> 
+		<t:actionlink t:id="addY" t:context="literal:2">Add 2</t:actionlink><br/>  
+		<t:actionlink t:id="clear">Clear</t:actionlink>
+	</div>	  
+
+	The links above have URLs like these:
+	<ul>
+		<li><code>http://thehost/jumpstart/examples/input/actionlinks:addx/1?t:ac=n</code></li>
+		<li><code>http://thehost/jumpstart/examples/input/actionlinks:addy/2?t:ac=n</code></li>
+		<li><code>http://thehost/jumpstart/examples/input/actionlinks:clear?t:ac=n</code></li>
+	</ul>
+	
+	Two other big differences between ActionLink and EventLink are:
+	<ul>
+		<li>When one of these URLs reaches the server-side, ActionLink "bubbles up" the event <em>Action</em>.</li>
+		<li>To distinguish between <em>action</em> events, a handler must specify the originating component name, eg. <em>onActionFromAddX</em>.</li>
+	</ul>
+
+	References:	
+	<a href="http://tapestry.apache.org/5.3/apidocs/org/apache/tapestry5/corelib/components/ActionLink.html">ActionLink</a>, 
+	<a href="http://tapestry.apache.org/page-navigation.html">Page Navigation</a>, 
+	<a href="http://tapestry.apache.org/component-events.html">Component Events</a>.<br/><br/>
+
+	<t:pagelink t:page="Index">Home</t:pagelink><br/><br/>
+
+	<t:sourcecodedisplay src="/web/src/main/java/jumpstart/web/pages/examples/input/ActionLinks.tml"/>
+	<t:sourcecodedisplay src="/web/src/main/java/jumpstart/web/pages/examples/input/ActionLinks.java"/>
+	<t:sourcecodedisplay src="/web/src/main/java/jumpstart/web/css/examples/examples.css"/>
+</body>
+</html>

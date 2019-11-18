@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- We need a doctype to allow us to use special characters like &nbsp; 
+	 We use a "strict" DTD to make IE follow the alignment rules. -->
+	 
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd">
+<head>
+	<link rel="stylesheet" type="text/css" href="${context:css/examples/examples.css}"/>
+</head>
+<body>
+	<h1>Activation Request Parameters (2)</h1>
+	
+	Look at the URL of this page. The query parameter at the end is called an <strong>activation request parameter</strong>.<br/>
+	To receive activation request parameters, use the <strong>@ActivationRequestParameter</strong> field annotation. For example:<br/>
+	
+	<code><pre>
+	@ActivationRequestParameter(value = "personid")
+	private Long personId;</pre></code>
+	
+	This page has been activated with activation request parameter <em>personid=${personId}</em>. Here is that Person:<br/>
+
+	<div class="eg">
+		<t:beandisplay object="person">[BeanDisplay here]</t:beandisplay>
+	</div>
+
+	When to you use activation request parameters? They are good for <strong>filter criteria</strong> because, arguably, 
+	they produce a more RESTful URL in that situation.<br/>
+	You can use an activation context and activation request parameters together in the same request. <br/><br/>
+
+	References:	
+	<a href="http://tapestry.apache.org/5.3/apidocs/org/apache/tapestry5/corelib/components/PageLink.html">PageLink</a>, 
+    <a href="http://tapestry.apache.org/page-navigation.html#PageNavigation-PageRenderRequests">Render Requests</a>, 
+	<a href="http://tapestry.apache.org/page-navigation.html#PageNavigation-Pageactivation">Page Activation</a>.<br/><br/>
+
+	<t:pagelink t:page="examples/navigation/ActivationRequestParameters1">Return</t:pagelink><br/><br/>
+	<t:pagelink t:page="Index">Home</t:pagelink><br/><br/>
+
+	<t:sourcecodedisplay src="/web/src/main/java/jumpstart/web/pages/examples/navigation/ActivationRequestParameters2.tml"/>
+	<t:sourcecodedisplay src="/web/src/main/java/jumpstart/web/pages/examples/navigation/ActivationRequestParameters2.java"/>
+	<t:sourcecodedisplay src="/web/src/main/java/jumpstart/web/css/examples/examples.css"/>
+	<t:sourcecodedisplay src="/business/src/main/java/jumpstart/business/domain/person/PersonFinderService.java"/>
+	<t:sourcecodedisplay src="/business/src/main/java/jumpstart/business/domain/person/Person.java"/>
+	<t:sourcecodedisplay src="/business/src/main/java/jumpstart/business/domain/person/Regions.java"/>
+</body>
+</html>
